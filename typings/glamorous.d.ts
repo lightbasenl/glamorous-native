@@ -52,7 +52,7 @@ export interface GlamorousOptions<Props, Context, DefaultProps> {
     context: Context,
     prevContext: Context
   ) => boolean
-  propsAreCssOverrides?: false
+  propsAreStyleOverrides?: boolean
   withProps: DefaultProps
 }
 
