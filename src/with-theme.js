@@ -12,7 +12,7 @@ export default function withTheme(ComponentToTheme) {
     state = {theme: {}}
     setTheme = theme => this.setState({theme})
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       if (!this.context[CHANNEL]) {
         if (__DEV__) {
           // eslint-disable-next-line no-console

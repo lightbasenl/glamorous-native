@@ -40,7 +40,7 @@ export default function createGlamorous(splitProps) {
           this.onRef = this.onRef.bind(this)
         }
 
-        componentWillMount() {
+        UNSAFE_componentWillMount() {
           const {theme} = this.props
 
           if (this.context[CHANNEL]) {
@@ -50,7 +50,7 @@ export default function createGlamorous(splitProps) {
           }
         }
 
-        componentWillReceiveProps(nextProps) {
+        UNSAFE_componentWillReceiveProps(nextProps) {
           if (this.props.theme !== nextProps.theme) {
             this.setTheme(nextProps.theme)
           }
@@ -176,7 +176,7 @@ export default function createGlamorous(splitProps) {
 
       return GlamorousComponent
     }
-  }
+  };
 }
 
 function getGlamorousComponentMetadata({

@@ -19,13 +19,13 @@ test('renders a component with theme', () => {
     </ThemeProvider>,
   )
 
-  wrapper.instance().componentWillMount()
+  wrapper.instance().UNSAFE_componentWillMount()
 
   const compWrapper = wrapper
     .find(Comp)
     .shallow({context: wrapper.instance().getChildContext()})
 
-  compWrapper.instance().componentWillMount()
+  compWrapper.instance().UNSAFE_componentWillMount()
 
   expect(compWrapper.props()).toMatchObject({
     style: [{backgroundColor: 'red'}, {padding: 10}],
@@ -46,13 +46,13 @@ test('renders a component with theme from props', () => {
     </ThemeProvider>,
   )
 
-  wrapper.instance().componentWillMount()
+  wrapper.instance().UNSAFE_componentWillMount()
 
   const compWrapper = wrapper
     .find(Comp)
     .shallow({context: wrapper.instance().getChildContext()})
 
-  compWrapper.instance().componentWillMount()
+  compWrapper.instance().UNSAFE_componentWillMount()
 
   expect(compWrapper.props()).toMatchObject({
     style: [{backgroundColor: 'red'}, {padding: 10}],
@@ -85,13 +85,13 @@ test('theme properties updates get propagated down the tree', () => {
 
   const themeWrapper = wrapper.find(ThemeProvider).shallow()
 
-  themeWrapper.instance().componentWillMount()
+  themeWrapper.instance().UNSAFE_componentWillMount()
 
   const compWrapper = wrapper
     .find(Child)
     .shallow({context: themeWrapper.instance().getChildContext()})
 
-  compWrapper.instance().componentWillMount()
+  compWrapper.instance().UNSAFE_componentWillMount()
 
   expect(compWrapper.props()).toMatchObject({
     style: [{backgroundColor: 'red'}, {padding: 10}],
@@ -120,21 +120,21 @@ test('merges nested themes', () => {
     </ThemeProvider>,
   )
 
-  wrapper.instance().componentWillMount()
+  wrapper.instance().UNSAFE_componentWillMount()
   const oneWrapper = wrapper
     .find(One)
     .shallow({context: wrapper.instance().getChildContext()})
-  oneWrapper.instance().componentWillMount()
+  oneWrapper.instance().UNSAFE_componentWillMount()
 
   const innerThemeWrapper = wrapper
     .find(ThemeProvider)
     .shallow({context: wrapper.instance().getChildContext()})
-  innerThemeWrapper.instance().componentWillMount()
+  innerThemeWrapper.instance().UNSAFE_componentWillMount()
 
   const twoWrapper = innerThemeWrapper
     .find(Two)
     .shallow({context: innerThemeWrapper.instance().getChildContext()})
-  twoWrapper.instance().componentWillMount()
+  twoWrapper.instance().UNSAFE_componentWillMount()
 
   expect(oneWrapper.props()).toMatchObject({
     style: [{padding: 1, margin: 1}],
